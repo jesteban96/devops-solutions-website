@@ -1,0 +1,19 @@
+/* themes.css */
+:root {
+    --background-dark: #343a40;
+    --text-dark: #ffffff;
+    --background-light: #ffffff;
+    --text-light: #000000;
+}
+
+/* themes.css */
+.theme-dark {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+  
+.theme-light {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+  
