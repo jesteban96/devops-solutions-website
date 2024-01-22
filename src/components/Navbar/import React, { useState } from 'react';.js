@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RiSunLine } from 'react-icons/ri';
 import { IoMdMoon } from 'react-icons/io';
@@ -6,34 +6,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Collapse, Button } from 'react-bootstrap';
 import '../../themes.css';
 import './Navbar.css';
-import NavbarLogic from './NavbarLogic';
-
-import logoDark from '../../media/images/free Delvery-dark.png'; // Ajusta la ruta al logo oscuro
-import logoLight from '../../media/images/free Delvery.png'; // Ajusta la ruta al logo claro
-
 
 const Navbar = () => {
-  
-  const { isDarkMode, isCollapsed, toggleTheme, toggleCollapsed } = NavbarLogic();
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const toggleCollapsed = () => {
+    setIsCollapsed(!isCollapsed);
+  }
 
   return (
     <nav className={`navbar ${isDarkMode ? 'bg-dark navbar-dark' : 'bg-light navbar-light'} navbar-expand-lg`}>
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
-          <div className='d-flex justify-content-between'>
-            <div className='me-2 mt-2 ms-2'>
-              Devops Solutions
-            </div>
-            <div>
-              <img
-                src={isDarkMode ? logoDark : logoLight}
-                alt="Devops Solutions Logo"
-                width="50"
-                height="50"
-                className="d-inline-block align-text-top"
-              />
-            </div>
-          </div>
+          Devops Solutions
         </Link>
         <Button
           className="navbar-toggler"
@@ -45,23 +35,18 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </Button>
         <Collapse in={!isCollapsed}>
-          <div className="">
-            <ul className="navbar-nav">
-              <li>
-                
-              </li>
-              <li className="nav-item mt-2">
-                {isDarkMode ? (
-                  <RiSunLine className="moon-icon" onClick={toggleTheme} />
-                ) : (
-                  <IoMdMoon className="moon-icon text-dark" onClick={toggleTheme} />
-                )}
-              </li>
+          <div className="align-items-center">
+            {isDarkMode ? (
+              <RiSunLine className="moon-icon" onClick={toggleTheme} />
+            ) : (
+              <IoMdMoon className="moon-icon text-dark" onClick={toggleTheme} />
+            )}
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink exact to="/" className="nav-link">
-                  Home
+                  Inicio
                 </NavLink>
-                </li>
+              </li>
               <li className="nav-item">
                 <NavLink to="/about" className="nav-link">
                   Acerca De
