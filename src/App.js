@@ -4,7 +4,13 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import './App.css';
 
+import { useEffect } from "react";
+
 const App = () => {
+    useEffect(() => {
+      document.title = "DevopsSolutions";
+    }, []);
+
   return (
     <Router>
       <div className="app">
