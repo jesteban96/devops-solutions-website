@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 import { useEffect } from "react";
+import Footer from './components/Footer/Footer';
 
 const App = () => {
     useEffect(() => {
@@ -19,6 +23,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           {/* Agrega más rutas aquí */}
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );
